@@ -1,0 +1,208 @@
+/*......Styling the web page.....*/
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Inter', sans-serif; 
+    transition: all 0.2s ease;
+}
+
+body { 
+    min-height: 100vh; 
+    display: flex;
+}
+
+.Main_Page {
+    display: flex;
+    width: 100%;
+}
+
+/*sidebar styling*/
+.sidebar { 
+    width: 260px; 
+    background: #0f172a; 
+    color: white; 
+    padding: 2rem; 
+    display: flex; 
+    flex-direction: column; 
+    position: sticky; 
+    top: 0; 
+    height: 100vh; 
+}
+
+.brand { font-size: 1.6rem; margin-bottom: 3rem; text-align: center; font-weight: 900; }
+.brand span { color: #6366f1; }
+
+.nav-btn {
+    width: 100%; text-align: left; padding: 12px; background: transparent; border: none;
+    color: #94a3b8; cursor: pointer; font-size: 1rem; border-radius: 10px; margin-bottom: 8px;
+}
+.nav-btn.active { background: #6366f1; color: white; font-weight: bold; }
+.nav-btn:hover { background: rgba(99, 102, 241, 0.1); color: #6366f1; transform: translateX(5px); }
+
+
+/*main content display design */
+.main_content { 
+    flex: 1; 
+    padding: 2.5rem; 
+    max-width: 1400px; 
+    margin: 0; 
+}
+
+.dashboard_header { margin-bottom: 2rem; }
+
+.dashboard_grid { 
+    display: grid; 
+    grid-template-columns: 1.6fr 0.9fr; 
+    gap: 2.5rem; 
+}
+
+.quick_stats_column { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 1.5rem; 
+}
+
+
+/*card and blocks styling*/
+.timer_card, .stat_card, .stat-card, #dash_stat_card, .chart-card-large, .modal-content, #todo_sidebar_card, #card_s1, #card_s2, #card_s3, #card_chart {
+    border-radius: 24px !important; 
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    background: inherit;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1); 
+}
+
+/*Forcing specific layout for the smaller cards */
+.stat_card, .stat-card, #dash_stat_card {
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+/*styling timer and all buttons*/
+#timer_display { font-size: 5.5rem; font-weight: 900; text-align: center; margin: 1.5rem 0; letter-spacing: -2px; }
+
+button { transition: 0.2s; cursor: pointer; }
+button:hover { transform: translateY(-3px); filter: brightness(1.1); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+button:active { transform: scale(0.95); }
+
+.START { background: #22c55e; color: white; padding: 14px; width: 48%; border:none; border-radius:12px; font-weight:900; }
+.END { background: #ef4444; color: white; padding: 14px; width: 48%; border:none; border-radius:12px; font-weight:900; }
+
+.btn_primary { background: #6366f1; color: white; padding: 10px 18px; border:none; border-radius:8px; cursor:pointer; font-weight:bold; }
+.btn_outline { background: transparent; color: #ef4444; padding: 8px 15px; border: 1px solid #ef4444; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.btn_outline:hover { background: #ef4444; color: white; }
+
+
+/*task input box styling */
+.input_row { display: flex; gap: 5px; margin-bottom: 10px; }
+.input_row input { padding: 10px; border: 1px solid #ddd; border-radius: 8px; flex: 1; background: transparent; color: inherit; }
+#session_tasks li { list-style:none; padding: 8px 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 10px; }
+
+
+/*analysis tab design*/
+.stats_grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+.stat-value { font-size: 2.2rem; font-weight: 900; margin-top: 0.5rem; }
+
+.graph_container_large { width: 100%; height: 300px; border-bottom: 3px solid #6366f1; display: flex; align-items: flex-end; margin-top: 1rem; }
+.bar-flex { display: flex; width: 100%; height: 100%; align-items: flex-end; justify-content: space-around; }
+.bar_container { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 50px; }
+.val-bar { width: 30px; background: #6366f1; border-radius: 8px 8px 0 0; }
+.bar-label { margin-top: 15px; font-size: 0.8rem; font-weight: 800; color: #64748b; text-transform: uppercase; }
+
+
+/*history portion*/
+.history_header_row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.history_flex_container { display: flex; flex-direction: column; gap: 12px; }
+.history_flex_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+}
+.flex_main { display: flex; align-items: center; gap: 20px; }
+.flex_stats { display: flex; align-items: center; gap: 30px; }
+
+
+/*modal(pop up) design*/
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 100; }
+.modal-content { max-width: 400px; width: 100%; text-align: center; }
+
+
+/*fixing the last problem: when screen size reduces, dashboard layout should not get affected...*/
+@media (max-width: 1100px) {
+    .dashboard_grid { 
+        grid-template-columns: 1fr; /* Stack columns */
+    }
+    .main_content { 
+        padding: 1.5rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    body { 
+        flex-direction: column; 
+    }
+    
+    /* Turn Sidebar into a Top Nav */
+    .sidebar { 
+        width: 100%; 
+        height: auto; 
+        position: relative; 
+        padding: 1.5rem; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        gap: 15px;
+    }
+    
+    .brand { 
+        margin-bottom: 0; 
+    }
+    
+    /*menu buttons in horizontal tab*/
+    .menu { 
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center; 
+        gap: 10px; 
+        width: 100%;
+    }
+    
+    .nav-btn {
+        width: auto; /*stopping from taking whole space */
+        margin-bottom: 0;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    /*reducing padding so that timer can be displayed properly*/
+    .timer_card, .stat_card, .stat-card, #dash_stat_card, .chart-card-large, .modal-content, #todo_sidebar_card {
+        padding: 1.5rem; 
+    }
+    
+    #timer_display { 
+        font-size: 3rem; /* Scaled down timer */
+    }
+    
+    .stats_grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    /*start and finish buttons*/
+    .btn-group, .btn_group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .START, .END { 
+        width: 100%; 
+    }
+}
